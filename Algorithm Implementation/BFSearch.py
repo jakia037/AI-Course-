@@ -1,9 +1,14 @@
+from collections import deque
+
+# BFS Algorithm (using deque)
+
+
 def bfs(graph, visit, node, queue):
     visit.append(node)
     queue.append(node)
 
     while queue:
-        m = queue.pop(0)
+        m = queue.popleft()
         print(m, end=" ")
 
         for nodes in graph[m]:
@@ -12,6 +17,7 @@ def bfs(graph, visit, node, queue):
                 queue.append(nodes)
 
 
+# -------- User Input --------
 graph = {}
 n = int(input("Enter number of nodes: "))
 
@@ -23,7 +29,7 @@ for i in range(n):
 start = input("Enter starting node: ")
 
 v = []
-q = []
+q = deque()
 
 print("\nBFS Traversal:")
 bfs(graph, v, start, q)
